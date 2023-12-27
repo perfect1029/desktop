@@ -30,7 +30,7 @@ const defaultCSP = [ 'upgrade-insecure-requests' ].concat(
   [ 'connect-src', 'font-src', 'img-src', 'media-src', 'style-src', 'form-action' ].map(x => `${x} https: data: blob: 'unsafe-inline'`)
 ).join('; ');
 
-const startBrowser = async (url, parentDir, { allowHTTP = true, allowNavigation = 'same-origin', windowSize, forceBrowser, forceEngine, localCSP = defaultCSP, devtools, userAgent, incognito }) => {
+const startBrowser = async (url, parentDir, { allowHTTP = false, allowNavigation = 'same-origin', windowSize, forceBrowser, forceEngine, localCSP = defaultCSP, devtools, userAgent, incognito }) => {
   const [ browserPath, browserName ] = await findBrowserPath(forceBrowser, forceEngine);
   if (!browserPath) {
     throw new Error('Failed to find a usable browser installed');
